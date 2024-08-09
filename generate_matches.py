@@ -22,7 +22,9 @@ The candidate is running for: {candidate_office}
 The candidate has the following bio: {candidate_bio} 
 The candidate lives in: {candidate_state}
 
-Please return only a list of event IDs seperated by semicolons.
+Please return with the following JSON format:
+"event_id": Event ID,
+"justification": Justification for why they should attend this event in particular
 """
 
 
@@ -48,4 +50,4 @@ def generate_matches(
         ],
     )
 
-    return response.choices[0].message.content.split(";")
+    return response.choices[0].message.content
