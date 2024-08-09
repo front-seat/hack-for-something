@@ -22,7 +22,9 @@ The event description is: {event_description}
 Please make your message friendly and engaging; personalize the content for this person, particularly focusing on any relevant issues they may be interested in."""
 
 
-def generate_invitation(event: models.events.Event, candidate: models.HotLead):
+def generate_invitation(
+    event: models.events.Event, candidate: models.hot_leads.HotLead
+):
     prompt = prompt_template.format(
         candidate_name=candidate.full_name,
         candidate_office=candidate.office_name,
@@ -48,5 +50,5 @@ def generate_invitation(event: models.events.Event, candidate: models.HotLead):
 
 # Example usage
 
-invitation = generate_invitation(models.events._event, models.hot_leads._candidate)
+invitation = generate_invitation(models.events._event, models.hot_leads._hot_lead)
 print(invitation)
