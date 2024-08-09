@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "dbaeumer.vscode-eslint",
+    "charliermarsh.ruff",
+    "esbenp.prettier-vscode",
+    "batisteo.vscode-django"
+  ]
+}
