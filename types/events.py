@@ -1,6 +1,7 @@
-from dataclasses import dataclass, field
-from typing import Optional
+from dataclasses import dataclass
 from datetime import datetime
+from typing import Optional
+
 
 @dataclass
 class Event:
@@ -121,4 +122,4 @@ event = Event(
     data_owner_id="owner123",
     data_owner_code="OWN123",
     event_id="event_12345"
-)
+))

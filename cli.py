@@ -5,20 +5,6 @@ import json
 import typing as t
 
 import click
-import pydantic as p
-
-
-class Event(p.BaseModel):
-    """A single event in mobilize.us."""
-
-    id: int
-    title: str
-
-
-class Candidate(p.BaseModel):
-    """A hot list candidate for RFS."""
-
-    pass
 
 
 @click.group()
