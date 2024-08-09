@@ -17,21 +17,19 @@ prompt_template = """
 Write a personalized invitation.
 You are inviting {candidate_name} who is running for {candidate_office}.
 Their bio is: {candidate_bio}
-You are inviting them to {event_name} which is an {event_type} event.
-The event description is: {event_description}
+You are inviting them to the following events:
+{events}
 Please make your message friendly and engaging; personalize the content for this person, particularly focusing on any relevant issues they may be interested in."""
 
 
-def generate_invitation(
-    event: models.events.Event, candidate: models.hot_leads.HotLead
+def generate_invite(
+    events: list[models.events.Event], candidate: models.hot_leads.HotLead
 ):
     prompt = prompt_template.format(
         candidate_name=candidate.full_name,
         candidate_office=candidate.office_name,
         candidate_bio=candidate.bio_with_edits,
-        event_name=event.title,
-        event_type=event.event_type,
-        event_description=event.description,
+        events=events,
     )
 
     response = openai.chat.completions.create(
@@ -39,7 +37,9 @@ def generate_invitation(
         messages=[
             {
                 "role": "system",
-                "content": "You are a helpful assistant that writes personalized invitations.",
+                "content": "You are an assisant with the goal of inviting potential politicians \
+                    to help them become politicans. This is meant to be a sms message \
+                ",
             },
             {"role": "user", "content": prompt},
         ],
@@ -50,5 +50,5 @@ def generate_invitation(
 
 # Example usage
 
-invitation = generate_invitation(models.events._event, models.hot_leads._hot_lead)
-print(invitation)
+# invitation = generate_invite([models.events._event], models.hot_leads._hot_lead)
+# print(invitation)
