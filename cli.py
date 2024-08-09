@@ -2,9 +2,10 @@
 
 import csv
 import typing as t
-from types.events import Event
 
 import click
+
+from models.events import Event
 
 
 @click.group()
@@ -24,4 +25,5 @@ def example(events: t.TextIO):
 
 
 if __name__ == "__main__":
+    cli()
     cli()

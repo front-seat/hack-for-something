@@ -1,2 +1,8 @@
+beautifulsoup4
+click
+httpx
+litestar[standard]
 openai
+pydantic
 python-dotenv
+ruff
