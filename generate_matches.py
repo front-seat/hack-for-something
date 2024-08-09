@@ -36,7 +36,7 @@ def generate_matches(
     )
 
     response = openai.chat.completions.create(
-        model="gpt-3.5-turbo",  # This is the model used by ChatGPT
+        model="gpt-4o",  # This is the model used by ChatGPT
         messages=[
             {
                 "role": "system",

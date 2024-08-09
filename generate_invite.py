@@ -19,7 +19,9 @@ You are inviting {candidate_name} who is running for {candidate_office}.
 Their bio is: {candidate_bio}
 You are inviting them to the following events:
 {events}
-Please make your message friendly and engaging; personalize the content for this person, particularly focusing on any relevant issues they may be interested in. Feel free to embed hyperlinks as markup."""
+
+Format the events in a numbered list by closest date. List Event Title, Date, Location, and details with an event hyperlink. Replace the listed categories with relevant emojis. 
+Please make your message friendly and engaging; personalize the content for this person, particularly focusing on any relevant issues they may be interested in."""
 
 
 def generate_invite(
@@ -33,7 +35,7 @@ def generate_invite(
     )
 
     response = openai.chat.completions.create(
-        model="gpt-3.5-turbo",  # This is the model used by ChatGPT
+        model="gpt-4o",  # This is the model used by ChatGPT
         messages=[
             {
                 "role": "system",
