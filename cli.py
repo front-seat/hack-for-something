@@ -36,5 +36,23 @@ def test_hot_leads(hot_leads: t.TextIO):
         print(hot_lead)
 
 
+RFS_ORG_ID = "942"
+
+
+@cli.command()
+@click.option("-e", "--events", type=click.File("r"), required=True)
+def filter_events(events: t.TextIO):
+    """Filter events."""
+    reader = csv.DictReader(events)
+    assert reader.fieldnames is not None
+    with click.get_text_stream("stdout") as stdout:
+        writer = csv.DictWriter(stdout, fieldnames=reader.fieldnames)
+        writer.writeheader()
+        for row in reader:
+            event = Event.model_validate(row)
+            if event.organization_id == RFS_ORG_ID:
+                writer.writerow(row)
+
+
 if __name__ == "__main__":
     cli()
