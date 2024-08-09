@@ -21,9 +21,7 @@ def example(events: t.TextIO):
     for row in reader:
         event = Event.model_validate(row)
         print(event)
-        break
 
 
 if __name__ == "__main__":
-    cli()
     cli()
