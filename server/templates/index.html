@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hack For Something</title>
+    <style>
+      body {
+        font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 18pt;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Hack For Something</h1>
+
+      <h3>Here are some candidates we know about:</h3>
+      <ul>
+        {% for hot_lead in hot_leads[:25] %}
+        <li>{{ hot_lead.full_name }} in {{ hot_lead.state }}</li>
+        {% endfor %}
+      </ul>
+
+      <h3>Here are all the events we know about:</h3>
+      <ul>
+        {% for event in events %}
+        <li>
+          <a href="{{ event.browser_url }}" target="_blank"
+            >{{ event.title }} on {{ event.start_date }}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
