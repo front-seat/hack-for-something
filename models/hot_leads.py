@@ -36,6 +36,7 @@ class HotLead(p.BaseModel, frozen=True):
 # Example usage:
 _hot_lead = HotLead(
     **{
+        "RFSID": "123",
         "Full Name": "John Doe",
         "firstName": "John",
         "lastName": "Doe",
