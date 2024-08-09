@@ -27,7 +27,7 @@ FRIENDLY_DATE_FORMAT = "%A %m/%d"
 def test_matches(events: t.TextIO, hot_leads: t.TextIO):
     event_objs = [Event.model_validate(row) for row in csv.DictReader(events)]
     hot_lead_objs = [HotLead.model_validate(row) for row in csv.DictReader(hot_leads)]
-    selected_event_ids = generate_matches(event_objs[:20], hot_lead_objs[0])
+    selected_event_ids = generate_matches(event_objs, hot_lead_objs[0])
     selected_events = [event for event in event_objs if event.id in selected_event_ids]
     invite_text = generate_invite(selected_events, hot_lead_objs[0])
     print(invite_text)
