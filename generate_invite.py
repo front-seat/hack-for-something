@@ -48,5 +48,5 @@ def generate_invitation(event: models.events.Event, candidate: models.HotLead):
 
 # Example usage
 
-invitation = generate_invitation(models.events._event, models.hot_leads._candidate)
+invitation = generate_invitation(models.events._event, models.hot_leads._hotlead)
 print(invitation)

@@ -34,15 +34,16 @@ class HotLead(p.BaseModel, frozen=True):
 
 
 # Example usage:
-# _hot_lead = HotLead(
-#     RFSID="12345",
-#     first_name="John",
-#     last_name="Doe",
-#     endorsement_office_locale="City",
-#     general_election_year=2024,
-#     office_name="Mayor",
-#     endorsement_office_level="Local",
-#     city="Springfield",
-#     zip_code="12345",
-#     state="IL",
-# )
+_hot_lead = HotLead(
+    RFSID="12345",
+    first_name="John",
+    last_name="Doe",
+    # endorsement_office_locale="City",
+    # general_election_year=2024,
+    office_name="Mayor",
+    # endorsement_office_level="Local",
+    # city="Springfield",
+    # zip_code="12345",
+    bio_with_edits="I really care about horses",
+    state="IL",
+)
