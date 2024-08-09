@@ -20,8 +20,12 @@ Their bio is: {candidate_bio}
 You are inviting them to the following events:
 {events}
 
-Format the events in a numbered list by closest date. List Event Title, Date, Location, and details with an event hyperlink. Replace the listed categories with relevant emojis. 
-Please make your message friendly and engaging; personalize the content for this person, particularly focusing on any relevant issues they may be interested in."""
+Format the events in a numbered list by closest date. List Event Title, Date, Location, and details with an event hyperlink in 'Details'. Replace the listed categories with relevant emojis. 
+Please make your message friendly and engaging; personalize the content for this person, particularly focusing on any relevant issues they may be interested in.
+When applicable, provide some justification as to why this event should be a priority for them.
+
+Output the message in HTML format instead of markdown.
+"""
 
 
 def generate_invite(

@@ -14,10 +14,11 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # openai.chat.completions.create
 
 prompt_template = """
-Please pick the top {n} events out of the events listed below that would be appropriate for the specified at the end of this message:
+Please pick the top {n} events out of the events listed below that would be most interesting for the candidate specified at the end of this message. Ignore events labeled as test events:
 [START EVENTS LIST]
 {event_list}
 [END EVENTS LIST]
+The candidate is running for: {candidate_office}
 The candidate has the following bio: {candidate_bio} 
 The candidate lives in: {candidate_state}
 
@@ -31,6 +32,7 @@ def generate_matches(
     prompt = prompt_template.format(
         n=5,
         event_list=events,
+        candidate_office=candidate.office_name,
         candidate_bio=candidate.bio_with_edits,
         candidate_state=candidate.state,
     )
