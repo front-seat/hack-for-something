@@ -14,7 +14,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # openai.chat.completions.create
 
 prompt_template = """
-Please pick the top {n} events out of the events listed below that would be most interesting for the candidate specified at the end of this message. Ignore events labeled as test events:
+Please pick the top {n} events out of the events listed below that would be most interesting and relevant for the candidate specified at the end of this message. For physical events, they must be in the candidate's state. Ignore events labeled as test events:
 [START EVENTS LIST]
 {event_list}
 [END EVENTS LIST]
