@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hack For Something</title>
+    <style>
+      body {
+        font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 16pt;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+
+      th {
+        text-align: left;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f0f0f0;
+      }
+
+      a {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 5px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 16px;
+        font-size: 12pt;
+      }
+
+      a:hover {
+        background-color: #45a049;
+      }
+
+      li {
+        padding-bottom: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">{{ invite_text|safe }}</div>
+  </body>
+</html>

@@ -24,7 +24,7 @@
         background-color: #f0f0f0;
       }
 
-      button {
+      a {
         background-color: #4caf50;
         border: none;
         color: white;
@@ -35,9 +35,10 @@
         margin: 4px 2px;
         cursor: pointer;
         border-radius: 16px;
+        font-size: 12pt;
       }
 
-      button:hover {
+      a:hover {
         background-color: #45a049;
       }
     </style>
@@ -70,7 +71,9 @@
           <td>{{ hot_lead.state }}</td>
           <td>{{ hot_lead.pronouns }}</td>
           <td>
-            <button>Generate Custom Email</button>
+            <a href="/email/{{ hot_lead.full_name }}" target="_blank"
+              >Generate Custom Email</a
+            >
           </td>
         </tr>
         {% endfor %}
