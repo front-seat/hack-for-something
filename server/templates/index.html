@@ -6,7 +6,7 @@
       body {
         font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
           "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        font-size: 18pt;
+        font-size: 16pt;
         margin: 0;
         padding: 0;
       }
@@ -15,29 +15,66 @@
         max-width: 960px;
         margin: 0 auto;
       }
+
+      th {
+        text-align: left;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f0f0f0;
+      }
+
+      button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 5px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 16px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Welcome to Hack For Something</h1>
+      <h1>Hack For Something</h1>
 
-      <h3>Here are some candidates we know about:</h3>
-      <ul>
-        {% for hot_lead in hot_leads[:25] %}
-        <li>{{ hot_lead.full_name }} in {{ hot_lead.state }}</li>
-        {% endfor %}
-      </ul>
+      <p>
+        Here is a list of candidates that we have qualified as
+        <i>fairly likely</i> to run for office in the next election cycle.
+      </p>
+      <p>
+        Choose a candidate to generate a message telling them about highly
+        relevant events that they should consider attending.
+      </p>
 
-      <h3>Here are all the events we know about:</h3>
-      <ul>
-        {% for event in events %}
-        <li>
-          <a href="{{ event.browser_url }}" target="_blank"
-            >{{ event.title }} on {{ event.start_date }}</a
-          >
-        </li>
+      <table>
+        <tr>
+          <th>Candidate</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Pronouns</th>
+          <th>&nbsp;</th>
+        </tr>
+        {% for hot_lead in hot_leads %}
+        <tr>
+          <td>{{ hot_lead.full_name }}</td>
+          <td>{{ hot_lead.city }}</td>
+          <td>{{ hot_lead.state }}</td>
+          <td>{{ hot_lead.pronouns }}</td>
+          <td>
+            <button>Generate Custom Email</button>
+          </td>
+        </tr>
         {% endfor %}
-      </ul>
+      </table>
     </div>
   </body>
 </html>

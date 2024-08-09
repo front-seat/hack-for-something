@@ -26,10 +26,10 @@ class HotLead(p.BaseModel, frozen=True):
     # endorsement_campaign_twitter_url: str | None = None
     # endorsement_campaign_url: str | None = None
     # district_population: int | None = None
-    # pronouns: str | None = None
-    # city: str
+    pronouns: str | None = p.Field(alias="Pronouns", default=None)
+    city: str = p.Field(alias="city")
     # zip_code: str
-    bio_with_edits: str | None = None
+    bio_with_edits: str | None = p.Field(alias="Bio with Edits", default=None)
     state: str = p.Field(alias="State")
 
 
@@ -41,6 +41,7 @@ _hot_lead = HotLead(
         "firstName": "John",
         "lastName": "Doe",
         "Office Name": "Mayor",
+        "city": "Chicago",
         "State": "IL",
     }
 )
