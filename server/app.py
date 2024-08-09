@@ -1,7 +1,7 @@
 import csv
 import pathlib
 
-from litestar import Litestar, MediaType, get
+from litestar import Litestar, get
 from litestar.contrib.jinja import JinjaTemplateEngine
 from litestar.response import Template
 from litestar.template.config import TemplateConfig
@@ -37,20 +37,20 @@ async def index() -> Template:
 @get("/email/{hot_lead_full_name: str}")
 async def email(hot_lead_full_name: str) -> Template:
     hot_lead = next(hl for hl in HOT_LEADS if hl.full_name == hot_lead_full_name)
+    return Template("email.html", context={"hot_lead": hot_lead})
+
+
+@get("/api/email/{hot_lead_full_name: str}")
+async def email_api(hot_lead_full_name: str) -> dict[str, str]:
+    hot_lead = next(hl for hl in HOT_LEADS if hl.full_name == hot_lead_full_name)
     selected_event_ids = generate_matches(EVENTS, hot_lead)
     selected_events = [event for event in EVENTS if event.id in selected_event_ids]
     invite_text = generate_invite(selected_events, hot_lead)
     invite_text = invite_text or "An error occurred while generating the invite."
     invite_text = invite_text.replace("```html", "").replace("```", "")
-    return Template(
-        "email.html",
-        context={
-            "hot_lead": hot_lead,
-            "selected_events": selected_events,
-            "invite_text": invite_text,
-        },
-        media_type=MediaType.HTML,
-    )
+    return {"invite_text": invite_text}
 
 
-app = Litestar(template_config=template_config, route_handlers=[index, email])
+app = Litestar(
+    template_config=template_config, route_handlers=[index, email, email_api]
+)
