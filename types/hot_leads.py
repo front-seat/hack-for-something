@@ -1,9 +1,10 @@
-from dataclasses import dataclass
-from typing import Optional
 from datetime import date
+from typing import Optional
 
-@dataclass
-class Candidate:
+import pydantic as p
+
+
+class Candidate(p.BaseModel, frozen=True):
     RFSID: str
     full_name: str
     first_name: str
@@ -34,17 +35,18 @@ class Candidate:
     bio_with_edits: Optional[str] = None
     state: str
 
+
 # Example usage:
-# candidate = Candidate(
-#     RFSID="12345",
-#     full_name="John Doe",
-#     first_name="John",
-#     last_name="Doe",
-#     endorsement_office_locale="City",
-#     general_election_year=2024,
-#     office_name="Mayor",
-#     endorsement_office_level="Local",
-#     city="Springfield",
-#     zip_code="12345",
-#     state="IL"
-# )
+_candidate = Candidate(
+    RFSID="12345",
+    full_name="John Doe",
+    first_name="John",
+    last_name="Doe",
+    endorsement_office_locale="City",
+    general_election_year=2024,
+    office_name="Mayor",
+    endorsement_office_level="Local",
+    city="Springfield",
+    zip_code="12345",
+    state="IL",
+)

@@ -1,10 +1,10 @@
-from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 
+import pydantic as p
 
-@dataclass
-class Event:
+
+class Event(p.BaseModel, frozen=True):
     dbt_source_relation: str
     id: str
     title: str
@@ -95,8 +95,9 @@ class Event:
     data_owner_code: str
     event_id: str
 
+
 # Example usage:
-event = Event(
+_event = Event(
     dbt_source_relation="example_relation",
     id="12345",
     title="Campaign Rally",
@@ -121,5 +122,5 @@ event = Event(
     vendor_unique_event_id="vendor_12345",
     data_owner_id="owner123",
     data_owner_code="OWN123",
-    event_id="event_12345"
-))
+    event_id="event_12345",
+)

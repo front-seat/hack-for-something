@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import csv
-import json
 import typing as t
+from types.events import Event
 
 import click
 
@@ -18,7 +18,9 @@ def example(events: t.TextIO):
     """Temporary. Shows how to read a single CSV."""
     reader = csv.DictReader(events)
     for row in reader:
-        print(json.dumps(row, indent=2))
+        event = Event.model_validate(row)
+        print(event)
+        break
 
 
 if __name__ == "__main__":
