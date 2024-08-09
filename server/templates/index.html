@@ -38,6 +38,10 @@
         font-size: 12pt;
       }
 
+      a.already {
+        background-color: #999;
+      }
+
       a:hover {
         background-color: #45a049;
       }
@@ -63,6 +67,7 @@
           <th>State</th>
           <th>Pronouns</th>
           <th>&nbsp;</th>
+          <th>Reached&nbsp;out?</th>
         </tr>
         {% for hot_lead in hot_leads %}
         <tr>
@@ -71,9 +76,18 @@
           <td>{{ hot_lead.state }}</td>
           <td>{{ hot_lead.pronouns }}</td>
           <td>
-            <a href="/email/{{ hot_lead.full_name }}" target="_blank"
+            <a
+              href="/email/{{ hot_lead.full_name }}"
+              target="_blank"
+              class="{% if hot_lead.full_name == 'Adlah Chisti' or hot_lead.full_name == 'Alexis Simmons' %}already{% endif %}"
               >Generate Custom Email</a
             >
+          </td>
+          <td>
+            <center>
+              {% if hot_lead.full_name == "Adlah Chisti" or hot_lead.full_name
+              == "Alexis Simmons" %}★{% else %}&nbsp;{% endif %}
+            </center>
           </td>
         </tr>
         {% endfor %}
