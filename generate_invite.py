@@ -19,7 +19,7 @@ You are inviting {candidate_name} who is running for {candidate_office}.
 Their bio is: {candidate_bio}
 You are inviting them to the following events:
 {events}
-Please make your message friendly and engaging; personalize the content for this person, particularly focusing on any relevant issues they may be interested in."""
+Please make your message friendly and engaging; personalize the content for this person, particularly focusing on any relevant issues they may be interested in. Feel free to embed hyperlinks as markup."""
 
 
 def generate_invite(
