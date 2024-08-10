@@ -19,6 +19,7 @@ EVENTS_CSV = pathlib.Path(__file__).parent.parent / "data" / "small-events.csv"
 HOT_LEADS_CSV = pathlib.Path(__file__).parent.parent / "data" / "hot-leads.csv"
 
 EVENTS = []
+HOT_LEADS = []
 
 with open(EVENTS_CSV) as f:
     reader = csv.DictReader(f)
@@ -26,7 +27,13 @@ with open(EVENTS_CSV) as f:
 
 with open(HOT_LEADS_CSV, encoding="utf-8-sig") as f:
     reader = csv.DictReader(f)
-    HOT_LEADS = [HotLead.model_validate(row) for row in reader]
+    unordered_leads = [HotLead.model_validate(row) for row in reader]
+    for hot_lead in unordered_leads:
+        if hot_lead.city == "Houston" and hot_lead.full_name != "Mo Jenkins":
+            HOT_LEADS.append(hot_lead)
+    for hot_lead in unordered_leads:
+        if hot_lead.city != "Houston":
+            HOT_LEADS.append(hot_lead)
 
 
 @get("/")

@@ -79,14 +79,15 @@
             <a
               href="/email/{{ hot_lead.full_name }}"
               target="_blank"
-              class="{% if hot_lead.full_name == 'Adlah Chisti' or hot_lead.full_name == 'Alexis Simmons' %}already{% endif %}"
+              class="{% if hot_lead.full_name == 'Adlah Chisti' or hot_lead.full_name == 'Lillian Alexander' or hot_lead.full_name == 'Alexis Simmons' %}already{% endif %}"
               >Generate Custom Email</a
             >
           </td>
           <td>
             <center>
               {% if hot_lead.full_name == "Adlah Chisti" or hot_lead.full_name
-              == "Alexis Simmons" %}★{% else %}&nbsp;{% endif %}
+              == "Lillian Alexander" or hot_lead.full_name == "Alexis Simmons"
+              %}★{% else %}&nbsp;{% endif %}
             </center>
           </td>
         </tr>
